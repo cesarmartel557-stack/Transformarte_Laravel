@@ -1,0 +1,20 @@
+# Deploy en hosting compartido: reenvía todas las peticiones a la carpeta
+# public/ de Laravel (equivalente a apuntar el document root a public/).
+# Todo lo demás del proyecto (app, vendor, .env, database) queda inaccesible
+# desde la web porque cualquier URL se resuelve dentro de public/.
+
+# Bloqueo explícito de archivos sensibles (.env, .git, etc.)
+<FilesMatch "^\.(env|git|sqlite)">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+<IfModule mod_authz_core.c>
+    <FilesMatch "^\.(env|git|sqlite)">
+        Require all denied
+    </FilesMatch>
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>

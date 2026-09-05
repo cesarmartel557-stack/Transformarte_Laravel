@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Rutas administrativas y endpoints internos
+Disallow: /gestion/
+Disallow: /livewire/
+Disallow: /storage/uploads/pdfs/
+
+# Sitemap canónico
+Sitemap: https://espaciotransformarte.com/sitemap.xml

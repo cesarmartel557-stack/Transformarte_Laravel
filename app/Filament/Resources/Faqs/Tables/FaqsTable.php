@@ -1,0 +1,41 @@
+<?php
+
+namespace App\Filament\Resources\Faqs\Tables;
+
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\EditAction;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
+
+class FaqsTable
+{
+    public static function configure(Table $table): Table
+    {
+        return $table
+            ->reorderable('orden')
+            ->defaultSort('orden')
+            ->columns([
+                TextColumn::make('pregunta')
+                    ->label('Pregunta')
+                    ->searchable(),
+                IconColumn::make('activo')
+                    ->label('Visible')
+                    ->boolean(),
+            ])
+            ->filters([
+                //
+            ])
+            ->recordActions([
+                EditAction::make(),
+                DeleteAction::make(),
+            ])
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
+                ]),
+            ]);
+    }
+}

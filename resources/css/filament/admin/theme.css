@@ -1,0 +1,128 @@
+@import '../../../../vendor/filament/filament/resources/css/theme.css';
+
+@source '../../../../app/Filament/**/*';
+@source '../../../../resources/views/filament/**/*';
+
+/*
+ * Tema del panel Transformarte (look beige/crema del frontend):
+ * - Fondo y tarjetas en tonos crema/tierra (paleta gris remapeada).
+ * - Topbar y menú lateral (offcanvas) en verde oliva fuerte #393c25
+ *   con iconos y textos claros.
+ * - Botones, links y acentos en tonalidades de verde oliva
+ *   (ver ->colors() en AdminPanelProvider).
+ * - Logo una sola vez: se oculta el del sidebar (queda el del topbar / login).
+ */
+
+@theme {
+    /* Paleta beige/tierra del sitio: reemplaza el gris por defecto */
+    --color-gray-50: #fbf8f3;
+    --color-gray-100: #f7f0e8;
+    --color-gray-200: #f0e6dd;
+    --color-gray-300: #e2d3c4;
+    --color-gray-400: #c4ae9b;
+    --color-gray-500: #a58f7d;
+    --color-gray-600: #826f62;
+    --color-gray-700: #6a5a4f;
+    --color-gray-800: #4a4636;
+    --color-gray-900: #393c25;
+    --color-gray-950: #262818;
+}
+
+@layer base {
+    /* Logo una sola vez: el topbar ya lo muestra, se oculta el del sidebar */
+    .fi-sidebar-header .fi-sidebar-header-logo-ctn,
+    .fi-sidebar-header .fi-logo {
+        display: none !important;
+    }
+
+    /* ── Topbar verde oliva fuerte con iconos claros ─────────────────── */
+    .fi-topbar-ctn {
+        --gray-300: #b7bc9f;
+        --gray-400: #c7cbb2;
+        --gray-500: #d8dbc8;
+        --gray-600: #e4e6d7;
+        --gray-700: #eef0e4;
+        --gray-800: #f6f7ef;
+        --gray-900: #fbfbf7;
+        --gray-950: #ffffff;
+    }
+
+    .fi-topbar {
+        background-color: #393c25 !important;
+        border-bottom-color: #2f3220 !important;
+        box-shadow: none !important;
+    }
+
+    /* ── Menú lateral (offcanvas) en los mismos colores ──────────────── */
+    .fi-sidebar {
+        --gray-300: #b7bc9f;
+        --gray-400: #c7cbb2;
+        --gray-500: #d8dbc8;
+        --gray-600: #e4e6d7;
+        --gray-700: #eef0e4;
+        --gray-800: #f6f7ef;
+        --gray-900: #fbfbf7;
+        --gray-950: #ffffff;
+
+        background-color: #393c25 !important;
+        border-inline-end-color: #2f3220 !important;
+    }
+
+    .fi-sidebar-header {
+        background-color: #393c25 !important;
+        border-bottom-color: #2f3220 !important;
+    }
+
+    /* Etiquetas de grupo del menú */
+    .fi-sidebar-group > .fi-sidebar-group-label,
+    .fi-sidebar-group-label {
+        color: #b7bc9f;
+    }
+
+    /* Items del menú: texto e iconos claros */
+    .fi-sidebar-item-btn {
+        color: #e4e6d7;
+    }
+
+    .fi-sidebar-item-btn:hover {
+        background-color: rgba(240, 230, 221, 0.08);
+        color: #ffffff;
+    }
+
+    /* Item activo: píldora oliva más clara con texto blanco */
+    .fi-sidebar-item.fi-active > .fi-sidebar-item-btn {
+        background-color: rgba(240, 230, 221, 0.16);
+        color: #ffffff;
+    }
+
+    .fi-sidebar-item.fi-active > .fi-sidebar-item-btn .fi-sidebar-item-icon {
+        color: #f0e6dd;
+    }
+
+    /* Flechas de colapso de grupos */
+    .fi-sidebar-group > button {
+        color: #b7bc9f;
+    }
+}
+
+/*
+ * Logos — fuera de @layer a propósito: las reglas en capas pierden contra
+ * los estilos sin capa de Filament (.fi-logo{display:flex}) y contra el
+ * style inline que imprime el componente logo.
+ */
+
+/* Logo del topbar compacto */
+.fi-topbar .fi-logo {
+    height: 2.5rem !important;
+    width: auto;
+}
+
+/* Logo del login a tamaño natural (93x103):
+   height:auto!important anula el style inline; display:block evita que
+   el flex de .fi-logo colapse el ancho del <img> */
+.fi-simple-header .fi-logo {
+    display: block;
+    height: auto !important;
+    max-height: 6.5rem;
+    width: auto;
+}
