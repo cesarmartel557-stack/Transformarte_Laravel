@@ -60,7 +60,9 @@
 							<div class="col-header col-header_right">
 								<nav class="main-navigation">
 									<ul>
+										@if ($mostrarEbooks ?? false)
 										<li><a href="{{ url('/#ebooks') }}">Ebooks</a></li>
+										@endif
 										<li><a href="{{ url('/#talleres') }}">Talleres</a></li>
 										<li><a href="{{ url('/#faq') }}">FAQ</a></li>
 										<li><a href="{{ url('/#contacto') }}">Contacto</a></li>
@@ -106,7 +108,9 @@
 							<div class="col-header col-header_right">
 								<nav class="main-navigation">
 									<ul>
+										@if ($mostrarEbooks ?? false)
 										<li><a href="{{ url('/#ebooks') }}">Ebooks</a></li>
+										@endif
 										<li><a href="{{ url('/#talleres') }}">Talleres</a></li>
 										<li><a href="{{ url('/#faq') }}">FAQ</a></li>
 										<li><a href="{{ url('/#contacto') }}">Contacto</a></li>
@@ -132,7 +136,9 @@
 				<li><a class="js-scroll" href="{{ url('/#quienSoy') }}">Quién soy</a></li>
 				<li><a class="js-scroll" href="{{ url('/#sesiones') }}">Sesiones</a></li>
 				<li><a class="js-scroll" href="{{ url('/#herramientas') }}">Herramientas</a></li>
+				@if ($mostrarEbooks ?? false)
 				<li><a class="js-scroll" href="{{ url('/#ebooks') }}">Ebooks</a></li>
+				@endif
 				<li><a class="js-scroll" href="{{ url('/#talleres') }}">Talleres</a></li>
 				<li><a class="js-scroll" href="{{ url('/#faq') }}">FAQ</a></li>
 				<li><a class="js-scroll" href="{{ url('/#contacto') }}">Contacto</a></li>
@@ -170,7 +176,9 @@
 						<div class="footer-widget">
 							<h6>RECURSOS</h6>
 							<ul class="footer-nav">
+								@if ($mostrarEbooks ?? false)
 								<li><a href="{{ url('/#ebooks') }}" target="_blank" rel="noopener">Biblioteca de ebooks</a></li>
+								@endif
 								<li><a href="{{ url('/#material') }}" target="_blank" rel="noopener">Material gratuito</a></li>
 								<li><a href="{{ url('/#material') }}" target="_blank" rel="noopener">Recursos gratuitos</a></li>
 								<li><a href="{{ url('/#herramientas') }}" target="_blank" rel="noopener">Herramientas</a></li>

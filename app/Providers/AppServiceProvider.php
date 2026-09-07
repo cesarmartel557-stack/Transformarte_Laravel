@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Configuracion;
 use App\Models\Contacto;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\View;
@@ -37,6 +38,13 @@ class AppServiceProvider extends ServiceProvider
                 'calendly_url' => $contacto?->calendly_url ?: 'https://calendar.app.google/yyE2dN7uzjg9H9TR9',
                 'instagram_url' => $contacto?->instagram_url ?: 'https://www.instagram.com/espacio_transformarte/',
             ]);
+        });
+
+        // Configuración global de visibilidad de secciones
+        View::composer(['layouts.app', 'home'], function ($view) {
+            $configuracion = Configuracion::first();
+
+            $view->with('mostrarEbooks', (bool) ($configuracion?->mostrar_ebooks ?? false));
         });
     }
 }

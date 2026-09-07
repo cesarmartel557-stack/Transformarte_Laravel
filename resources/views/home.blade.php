@@ -178,6 +178,7 @@
 	</div>
 </section>
 
+@if ($mostrarEbooks && $ebooks->isNotEmpty())
 <!-- =========== Biblioteca =========== -->
 <section id="ebooks" class="seccion_biblioteca">
 	<div class="container">
@@ -206,6 +207,7 @@
 			@endforeach
 		</div>
 </section>
+@endif
 
 <!-- =========== Material =========== -->
 <section id="material" class="seccion_material">

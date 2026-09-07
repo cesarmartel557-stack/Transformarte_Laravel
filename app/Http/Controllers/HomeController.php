@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Configuracion;
 use App\Models\Contacto;
 use App\Models\Curso;
 use App\Models\Ebook;
 use App\Models\Faq;
 use App\Models\FormatoSesion;
-use App\Models\Herramienta;
 use App\Models\Hero;
+use App\Models\Herramienta;
 use App\Models\Material;
 use App\Models\SobreMi;
 use App\Models\Taller;
@@ -21,6 +22,9 @@ class HomeController extends Controller
 {
     public function index(): View
     {
+        $configuracion = Configuracion::first();
+        $mostrarEbooks = (bool) ($configuracion?->mostrar_ebooks ?? false);
+
         return view('home', [
             // Secciones únicas (singleton)
             'hero' => Hero::first(),
@@ -31,7 +35,8 @@ class HomeController extends Controller
             'sesiones' => FormatoSesion::orderBy('orden')->get(),
             'temas' => Tema::orderBy('orden')->get(),
             'herramientas' => Herramienta::orderBy('orden')->get(),
-            'ebooks' => Ebook::all(),
+            'mostrarEbooks' => $mostrarEbooks,
+            'ebooks' => $mostrarEbooks ? Ebook::all() : collect(),
             'materiales' => Material::all(),
             'cursos' => Curso::orderBy('orden')->get(),
             'talleres' => Taller::orderBy('orden')->get(),

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Configuracion;
 use App\Models\Contacto;
 use App\Models\Curso;
 use App\Models\Ebook;
@@ -391,6 +392,13 @@ class DatabaseSeeder extends Seeder
             'pregunta' => '¿Cómo funciona el proceso?',
             'respuesta' => '<strong>1. Agendás una primera consulta</strong><br>Nos conocemos, me contás qué estás buscando y vemos si este espacio tiene sentido para vos.<br><strong>2. Definimos un foco de trabajo</strong><br>En la primera entrevista podemos definir cuál va a ser el foco del proceso en el que iremos trabajando sesión tras sesión.<br><strong>3. Trabajamos en sesión</strong><br>Conversamos, exploramos, usamos herramientas y diseñamos próximos pasos. En cada sesión, la idea es que puedas llevarte un plan de acción.<br><strong>4. Revisamos avances</strong><br>Vemos qué funcionó, qué apareció y qué conviene ajustar.<br><strong>5. Cierre de proceso</strong><br>Una vez que llegamos al final de nuestros encuentros, cerramos el proceso con un feedback sobre lo trabajado.',
             'orden' => 12,
+        ]);
+
+        // -------------------------------------------------
+        // Configuración general
+        // -------------------------------------------------
+        Configuracion::create([
+            'mostrar_ebooks' => false,
         ]);
 
         // -------------------------------------------------
